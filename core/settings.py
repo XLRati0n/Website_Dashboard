@@ -36,7 +36,7 @@ DEBUG = 'RENDER' not in os.environ
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'xlration-aiffi.pbtjan.easypanel.host']
 
 # Add here your deployment HOSTS
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:5085', 'http://127.0.0.1:8000', 'http://127.0.0.1:5085']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:5085', 'http://127.0.0.1:8000', 'http://127.0.0.1:5085', 'https://xlration-aiffi.pbtjan.easypanel.host']
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
