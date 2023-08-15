@@ -10,21 +10,21 @@ urlpatterns = [
   path('update_data/', update_data, name='update_data'),
   path('get_products_by_label/', get_products_by_label, name='get_products_by_label'),
   # Components
-  path('components/button/', views.bc_button, name='bc_button'),
-  path('components/badges/', views.bc_badges, name='bc_badges'),
-  path('components/breadcrumb-pagination/', views.bc_breadcrumb_pagination, name='bc_breadcrumb_pagination'),
-  path('components/collapse/', views.bc_collapse, name='bc_collapse'),
-  path('components/tabs/', views.bc_tabs, name='bc_tabs'),
-  path('components/typography/', views.bc_typography, name='bc_typography'),
-  path('components/feather-icon/', views.icon_feather, name='icon_feather'),
+  # path('components/button/', views.bc_button, name='bc_button'),
+  # path('components/badges/', views.bc_badges, name='bc_badges'),
+  # path('components/breadcrumb-pagination/', views.bc_breadcrumb_pagination, name='bc_breadcrumb_pagination'),
+  # path('components/collapse/', views.bc_collapse, name='bc_collapse'),
+  # path('components/tabs/', views.bc_tabs, name='bc_tabs'),
+  # path('components/typography/', views.bc_typography, name='bc_typography'),
+  # path('components/feather-icon/', views.icon_feather, name='icon_feather'),
 
   # Forms and Tables
   path('forms/form-elements/', views.form_elements, name='form_elements'),
   path('tables/basic-tables/', views.basic_tables, name='basic_tables'),
 
   # Chart and Maps
-  path('charts/morris-chart/', views.morris_chart, name='morris_chart'),
-  path('maps/google-maps/', views.google_maps, name='google_maps'),
+  # path('charts/morris-chart/', views.morris_chart, name='morris_chart'),
+  # path('maps/google-maps/', views.google_maps, name='google_maps'),
 
   # Authentication
   path('accounts/register/', views.UserRegistrationView.as_view(), name='register'),

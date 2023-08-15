@@ -57,21 +57,21 @@ def bc_collapse(request):
   }
   return render(request, "pages/components/bc_collapse.html", context)
 
-@login_required(login_url='/accounts/login/')
-def bc_tabs(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'navs_&_tabs'
-  }
-  return render(request, "pages/components/bc_tabs.html", context)
+# @login_required(login_url='/accounts/login/')
+# def bc_tabs(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'navs_&_tabs'
+#   }
+#   return render(request, "pages/components/bc_tabs.html", context)
 
-@login_required(login_url='/accounts/login/')
-def bc_typography(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'typography'
-  }
-  return render(request, "pages/components/bc_typography.html", context)
+# @login_required(login_url='/accounts/login/')
+# def bc_typography(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'typography'
+#   }
+#   return render(request, "pages/components/bc_typography.html", context)
 
 @login_required(login_url='/accounts/login/')
 def icon_feather(request):
@@ -98,22 +98,22 @@ def basic_tables(request):
   }
   return render(request, 'pages/tbl_bootstrap.html', context)
 
-# Chart and Maps
-@login_required(login_url='/accounts/login/')
-def morris_chart(request):
-  context = {
-    'parent': 'chart',
-    'segment': 'morris_chart'
-  }
-  return render(request, 'pages/chart-morris.html', context)
+# # Chart and Maps
+# @login_required(login_url='/accounts/login/')
+# def morris_chart(request):
+#   context = {
+#     'parent': 'chart',
+#     'segment': 'morris_chart'
+#   }
+#   return render(request, 'pages/chart-morris.html', context)
 
-@login_required(login_url='/accounts/login/')
-def google_maps(request):
-  context = {
-    'parent': 'maps',
-    'segment': 'google_maps'
-  }
-  return render(request, 'pages/map-google.html', context)
+# @login_required(login_url='/accounts/login/')
+# def google_maps(request):
+#   context = {
+#     'parent': 'maps',
+#     'segment': 'google_maps'
+#   }
+#   return render(request, 'pages/map-google.html', context)
 
 # Authentication
 class UserRegistrationView(CreateView):
