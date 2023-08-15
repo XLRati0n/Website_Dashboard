@@ -19,8 +19,8 @@ urlpatterns = [
   # path('components/feather-icon/', views.icon_feather, name='icon_feather'),
 
   # Forms and Tables
-  path('forms/form-elements/', views.form_elements, name='form_elements'),
-  path('tables/basic-tables/', views.basic_tables, name='basic_tables'),
+  # path('forms/form-elements/', views.form_elements, name='form_elements'),
+  # path('tables/basic-tables/', views.basic_tables, name='basic_tables'),
 
   # Chart and Maps
   # path('charts/morris-chart/', views.morris_chart, name='morris_chart'),

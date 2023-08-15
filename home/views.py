@@ -73,30 +73,30 @@ def tables(request):
 #   }
 #   return render(request, "pages/components/bc_typography.html", context)
 
-@login_required(login_url='/accounts/login/')
-def icon_feather(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'feather_icon'
-  }
-  return render(request, "pages/components/icon-feather.html", context)
+# @login_required(login_url='/accounts/login/')
+# def icon_feather(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'feather_icon'
+#   }
+#   return render(request, "pages/components/icon-feather.html", context)
 
-# Forms and Tables
-@login_required(login_url='/accounts/login/')
-def form_elements(request):
-  context = {
-    'parent': 'form_components',
-    'segment': 'form_elements'
-  }
-  return render(request, 'pages/form_elements.html', context)
+# # Forms and Tables
+# @login_required(login_url='/accounts/login/')
+# def form_elements(request):
+#   context = {
+#     'parent': 'form_components',
+#     'segment': 'form_elements'
+#   }
+#   return render(request, 'pages/form_elements.html', context)
 
-@login_required(login_url='/accounts/login/')
-def basic_tables(request):
-  context = {
-    'parent': 'tables',
-    'segment': 'basic_tables'
-  }
-  return render(request, 'pages/tbl_bootstrap.html', context)
+# @login_required(login_url='/accounts/login/')
+# def basic_tables(request):
+#   context = {
+#     'parent': 'tables',
+#     'segment': 'basic_tables'
+#   }
+#   return render(request, 'pages/tbl_bootstrap.html', context)
 
 # # Chart and Maps
 # @login_required(login_url='/accounts/login/')
