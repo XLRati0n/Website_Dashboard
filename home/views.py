@@ -13,20 +13,6 @@ import datetime
 
 SQLALCHEMY_DATABASE_URL = os.environ.get('SQLALCHEMY_DATABASE_URL')
 
-DB_HOST = "51.83.43.0"
-DB_USERNAME = "postgres"
-DB_PORT = "5432"
-DB_PASSWORD = "T1m353ri35AvecLAN"
-DB_NAME = "xlration"
-conn = psycopg2.connect(
-    database=DB_NAME,
-    user=DB_USERNAME,
-    password=DB_PASSWORD,
-    host=DB_HOST,
-    port=DB_PORT
-)
-cursor = conn.cursor()
-
 def index(request):
   context = {
     'segment': 'index'
@@ -171,10 +157,24 @@ def sample_page(request):
 
 #@login_required(login_url='/accounts/login/')
 def prediction(request):
+    DB_HOST =  os.environ.get('DB_HOST')
+    DB_USERNAME =  os.environ.get('DB_USERNAME')
+    DB_PORT =  os.environ.get('DB_PORT')
+    DB_PASSWORD =  os.environ.get('DB_PASSWORD')
+    DB_NAME = os.environ.get('DB_NAME')
+    conn = psycopg2.connect(
+    database=DB_NAME,
+    user=DB_USERNAME,
+    password=DB_PASSWORD,
+    host=DB_HOST,
+    port=DB_PORT
+    )
+    cursor = conn.cursor()
     cursor.execute(
     f"""SELECT DISTINCT ON ("label") "label"
     FROM products;""")
     bdd_data = list(cursor.fetchall())
+    cursor.close()
     Product_Label.clear_content()
     Product_Label.objects.bulk_create([Product_Label(label=data[0]) for data in bdd_data])
     context = {
@@ -184,6 +184,19 @@ def prediction(request):
 
 @csrf_exempt
 def update_data(request):
+    DB_HOST =  os.environ.get('DB_HOST')
+    DB_USERNAME =  os.environ.get('DB_USERNAME')
+    DB_PORT =  os.environ.get('DB_PORT')
+    DB_PASSWORD =  os.environ.get('DB_PASSWORD')
+    DB_NAME = os.environ.get('DB_NAME')
+    conn = psycopg2.connect(
+    database=DB_NAME,
+    user=DB_USERNAME,
+    password=DB_PASSWORD,
+    host=DB_HOST,
+    port=DB_PORT
+    )
+    cursor = conn.cursor()
     magasin_id=1
     date = request.POST.get('date')
     Product.clear_content()
@@ -199,6 +212,7 @@ def update_data(request):
     JOIN sells AS s ON sp."UPC" = s."UPC"
     ORDER BY sp."UPC", sp."date"; """)
     bdd_data = list(cursor.fetchall())
+    cursor.close()
     if len(bdd_data) == 0:
       print("No data")
     else:
