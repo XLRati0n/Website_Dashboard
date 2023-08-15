@@ -6,7 +6,7 @@ from .views import tables, prediction, update_data, get_products_by_label
 
 urlpatterns = [
   path('' , views.index, name='index'),
-  # path('tables/', tables     , name='tables'),
+  path('tables/', tables     , name='tables'),
   path('update_data/', update_data, name='update_data'),
   path('get_products_by_label/', get_products_by_label, name='get_products_by_label'),
   # Components
