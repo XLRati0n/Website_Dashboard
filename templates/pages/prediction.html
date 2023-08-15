@@ -1,0 +1,231 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block breadcrumbs %}{% endblock breadcrumbs %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'assets/plugins/jquery-ui/jquery-ui.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/plugins/chart-morris/css/morris.css' %}">
+<style>
+    .iframe-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 56.25%; /* Aspect ratio 16:9 (100% / 16 * 9) */
+    }
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .logo-img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    .alphabet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block; /* Afficher les éléments sur la même ligne */
+    }
+    .wider-select {
+        width: 100%; /* Ajustez la largeur selon vos besoins */
+    }
+    .alphabet-list li {
+        display: inline-block;
+        margin-right: 10px; /* Ajoute de l'espace entre les lettres */
+    }
+</style>
+{% endblock extrastyle %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+    <form>
+        {% csrf_token %}
+        <label for="selected-date">Sélectionnez une date:</label>
+        <input type="date" id="selected-date">
+    </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="iframe-container">
+            <iframe src="/datatb/product/?data={{ data|urlencode }}"></iframe>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="alphabet-list">
+            {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" %}
+                <li>
+                    <a href="#" class="alpha-link" data-letter="{{ letter }}">{{ letter }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <label for="product-label-select">Sélectionnez un label de produit:</label>
+        <br>
+        <select id="product-label-select" class="wider-select"></select>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 col-xl-4">
+        <div class="card card-social">
+            <div class="card-block border-bottom">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <img src="{% static 'assets/images/leclerc.png' %}" alt="Leclerc Logo"
+                            class="img-fluid logo-img" style="max-width: 60px">
+                    </div>
+                    <div class="col text-right">
+                        <h3>12,281 Produits</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card card-social">
+            <div class="card-block border-bottom">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <img src="{% static 'assets/images/carrefour.png' %}" alt="Leclerc Logo"
+                            class="img-fluid logo-img">
+                    </div>
+                    <div class="col text-right">
+                        <h3>11,200 Produits</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="card card-social">
+            <div class="card-block border-bottom">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <img src="{% static 'assets/images/Auchan-Logo.png' %}" alt="Leclerc Logo"
+                            class="img-fluid logo-img">
+                    </div>
+                    <div class="col text-right">
+                        <h3>10,500 Produits</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{% static 'assets/plugins/chart-morris/js/raphael.min.js' %}"></script>
+<script src="{% static 'assets/plugins/chart-morris/js/morris.min.js' %}"></script>
+<script src="{% static 'assets/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<script>
+$(document).ready(function () {
+    $('.alpha-link').on('click', function () {
+        var selectedLetter = $(this).data('letter');
+        updateLetterSelector(selectedLetter);
+    });
+
+    function updateLetterSelector(selectedLetter) {
+        $.ajax({
+            url: '/get_products_by_label/',
+            dataType: 'json',
+            data: {
+                letter: selectedLetter
+            },
+            success: function (data) {
+                populateProductLabelSelect(data);
+            }
+        });
+    }
+
+    function populateProductLabelSelect(labels) {
+        var selectElement = $('#product-label-select');
+        selectElement.empty();
+        selectElement.append($('<option>', {
+            value: '',
+            text: 'Tous les labels de produit'
+        }));
+        labels.forEach(function (label) {
+            selectElement.append($('<option>', {
+                value: label,
+                text: label
+            }));
+        });
+    }
+
+    $('#product-label-select').on('change', function () {
+        var selectedLabel = $(this).val();
+        if (selectedLabel) {
+            fetchProductsByLabel(selectedLabel);
+        } else {
+            // Effacer le contenu du sélecteur de produit lorsque rien n'est sélectionné
+            $('#product-label-select').empty();
+        }
+    });
+
+    function fetchProductsByLabel(label) {
+        $.ajax({
+            url: '/prediction/get_products_by_label/', // Utilisez l'URL correcte
+            dataType: 'json',
+            data: {
+                label: label
+            },
+            success: function (data) {
+                // Mettez à jour votre logique pour afficher les produits correspondants
+                // par exemple : updateProductList(data);
+            },
+            error: function () {
+                console.error('Erreur lors de la récupération des produits par label');
+            }
+        });
+    }
+    });
+    $(document).ready(function () {
+        $('#selected-date').on('change', function () {
+            var selectedDate = $(this).val();
+            if (selectedDate) {
+                fetchData(selectedDate);
+            }
+        });
+
+        function fetchData(date) {
+            // Appeler la fonction pour récupérer les données basées sur la date sélectionnée
+            $.ajax({
+                url: '/update_data/',
+                method: 'POST',
+                data: { date: date },
+                success: function (data) {
+                    console.log('Données récupérées:', data);
+                    updateIframe(data);
+                },
+                error: function () {
+                    console.error('Erreur lors de la récupération des données');
+                }
+            });
+        }
+
+        function updateIframe(data) {
+            var iframe = document.querySelector('.iframe-container iframe');
+            var currentSrc = iframe.getAttribute('src');
+            var newSrc = currentSrc.split('?')[0] + '?data=' + encodeURIComponent(JSON.stringify(data));
+            iframe.setAttribute('src', newSrc);
+        }
+    });
+</script>
+{% endblock extra_js %}
