@@ -25,14 +25,14 @@
             <span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableaux de bord</span>
           </a>
         </li>
-        <li class="nav-item {% if 'tables' in segment %}active{% endif %}">
+        {% comment %} <li class="nav-item {% if 'tables' in segment %}active{% endif %}">
           <a href="{% url 'tables' %}" class="nav-link "><span class="pcoded-micon"><i
                 class="feather icon-server text-c-green"></i></span><span class="pcoded-mtext">Dynamic Tables</span></a>
         </li>
         <li class="nav-item">
           <a href="/api/product/" class="nav-link "><span class="pcoded-micon"><i
                 class="feather icon-zap text-c-green"></i></span><span class="pcoded-mtext">API</span></a>
-        </li>
+        </li> {% endcomment %}
 
         {% if not request.user.is_authenticated %}
         <li
@@ -77,7 +77,7 @@
           {% endfor %}
         {% endif %}
 
-        {% if request.user.is_authenticated and not request.user.is_superuser %}
+        {% comment %} {% if request.user.is_authenticated and not request.user.is_superuser %}
         <li class="nav-item pcoded-menu-caption">
           <label>UI Element</label>
         </li>
@@ -119,9 +119,9 @@
         </li>
         <li data-username="Maps Google" class="nav-item {% if 'google_maps' in segment %}active{% endif %}"><a href="{% url 'google_maps' %}" class="nav-link "><span
               class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Maps</span></a>
-        </li>
-        <li class="nav-item pcoded-menu-caption">
-          <label>Pages</label>
+        </li> {% endcomment %}
+        <li class="nav-item pcoded-menu-caption"> 
+          <label>Utilisateur</label>
         </li>
         <li
           data-username="Authentication Sign up Sign in reset password Change password Personal information profile settings map form subscribe"
@@ -129,11 +129,11 @@
           <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i
                 class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentification</span></a>
           <ul class="pcoded-submenu">
-            <li class=""><a href="{% url 'register' %}" class="" target="_blank">S'enreigstrer</a></li>
+            <li class=""><a href="{% url 'register' %}" class="" target="_blank">S'enregistrer</a></li>
             <li class=""><a href="{% url 'login' %}" class="" target="_blank">Se connecter</a></li>
           </ul>
         </li>
-        <li data-username="Profile Page" class="nav-item {% if 'profile' in segment %}active{% endif %}"><a href="{% url 'profile' %}" class="nav-link"><span
+        {% comment %} <li data-username="Profile Page" class="nav-item {% if 'profile' in segment %}active{% endif %}"><a href="{% url 'profile' %}" class="nav-link"><span
               class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Profil
               Page</span></a>
         </li>
@@ -144,7 +144,7 @@
         <li data-username="Disabled Menu" class="nav-item disabled"><a href="javascript:" class="nav-link"><span
               class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Disabled
               menu</span></a>
-        </li>
+        </li> {% endcomment %}
         {% endif %}
       </ul>
     </div>
