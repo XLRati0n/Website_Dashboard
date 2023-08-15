@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 from .views import tables, prediction, update_data, get_products_by_label
 
 urlpatterns = [
-  path(''       , views.index, name='index'),
+  path('' , views.index, name='index'),
   path('tables/', tables     , name='tables'),
   path('update_data/', update_data, name='update_data'),
   path('get_products_by_label/', get_products_by_label, name='get_products_by_label'),
@@ -47,7 +47,6 @@ urlpatterns = [
     template_name='accounts/auth-password-reset-complete.html'
   ), name='password_reset_complete'),
 
-  #
   path('profile/', views.profile, name='profile'),
   path('sample-page/', views.sample_page, name='sample_page'),
 

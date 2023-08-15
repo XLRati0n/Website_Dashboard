@@ -13,11 +13,11 @@ import datetime
 
 SQLALCHEMY_DATABASE_URL = os.environ.get('SQLALCHEMY_DATABASE_URL')
 
-DB_HOST = os.getenv("DB_HOST")
-DB_USERNAME = os.getenv("DB_USERNAME")
-DB_PORT = os.getenv("DB_PORT")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_NAME = os.getenv("DB_NAME")
+DB_HOST = os.environ.get('DB_HOST')
+DB_USERNAME = os.environ.get('DB_USERNAME')
+DB_PORT = os.environ.get('DB_PORT')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_NAME = os.environ.get('DB_NAME')
 conn = psycopg2.connect(
     database=DB_NAME,
     user=DB_USERNAME,
@@ -169,7 +169,7 @@ def sample_page(request):
   }
   return render(request, 'pages/sample-page.html', context)
 
-@login_required(login_url='/accounts/login/')
+#@login_required(login_url='/accounts/login/')
 def prediction(request):
     cursor.execute(
     f"""SELECT DISTINCT ON ("label") "label"
