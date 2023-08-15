@@ -91,7 +91,7 @@
               </li>
             </ul> {% endcomment %}
             <div class="noti-footer">
-              <a href="javascript:">show all</a>
+              <a href="javascript:">(En cours... Pour des notifications !)</a>
             </div>
           </div>
         </div>
@@ -113,6 +113,13 @@
                 {% endif %}
                   <i class="feather icon-log-out"></i>
                 </a>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'admin:password_change' %}" class="dropdown-item">
+                {% else %}
+                <a href="{% url 'password_change' %}" class="dropdown-item">
+                {% endif %}
+                  <i class="feather icon-edit"></i> Nouveau mot de passe
+                </a>
               {% endif %}
             </div>
             {% comment %} <ul class="pro-body">
@@ -124,17 +131,10 @@
                   Messages</a></li>
               <li><a href="#" class="dropdown-item"><i class="feather icon-lock"></i> Lock
                   Screen</a></li> {% endcomment %}
-              {% if request.user.is_authenticated %}
+              {% comment %} {% if request.user.is_authenticated %}
               <li>
-                {% if request.user.is_superuser %}
-                <a href="{% url 'admin:password_change' %}" class="dropdown-item">
-                {% else %}
-                <a href="{% url 'password_change' %}" class="dropdown-item">
-                {% endif %}
-                  <i class="feather icon-edit"></i>Change Password
-                </a>
               </li>
-              {% endif %}
+              {% endif %} {% endcomment %}
             </ul>
           </div>
         </div>
