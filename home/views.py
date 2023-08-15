@@ -11,13 +11,12 @@ import psycopg2
 from .models import Product, Product_Label
 import datetime
 
-SQLALCHEMY_DATABASE_URL = os.environ.get('SQLALCHEMY_DATABASE_URL')
 
-DB_HOST = os.environ.get('DB_HOST')
-DB_USERNAME = os.environ.get('DB_USERNAME')
-DB_PORT = os.environ.get('DB_PORT')
-DB_PASSWORD = os.environ.get('DB_PASSWORD')
-DB_NAME = os.environ.get('DB_NAME')
+DB_HOST = "51.83.43.0"
+DB_USERNAME = "postgres"
+DB_PORT = "5432"
+DB_PASSWORD = "T1m353ri35AvecLAN"
+DB_NAME = "xlration"
 conn = psycopg2.connect(
     database=DB_NAME,
     user=DB_USERNAME,
