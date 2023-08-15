@@ -19,43 +19,43 @@ def index(request):
   }
   return render(request, "pages/index.html", context)
 
-def tables(request):
-  context = {
-    'segment': 'tables'
-  }
-  return render(request, "pages/tables.html", context)
+# def tables(request):
+#   context = {
+#     'segment': 'tables'
+#   }
+#   return render(request, "pages/tables.html", context)
 
-@login_required(login_url='/accounts/login/')
-def bc_button(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'button'
-  }
-  return render(request, "pages/components/bc_button.html", context)
+# @login_required(login_url='/accounts/login/')
+# def bc_button(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'button'
+#   }
+#   return render(request, "pages/components/bc_button.html", context)
 
-@login_required(login_url='/accounts/login/')
-def bc_badges(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'badges'
-  }
-  return render(request, "pages/components/bc_badges.html", context)
+# @login_required(login_url='/accounts/login/')
+# def bc_badges(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'badges'
+#   }
+#   return render(request, "pages/components/bc_badges.html", context)
 
-@login_required(login_url='/accounts/login/')
-def bc_breadcrumb_pagination(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'breadcrumbs_&_pagination'
-  }
-  return render(request, "pages/components/bc_breadcrumb-pagination.html", context)
+# @login_required(login_url='/accounts/login/')
+# def bc_breadcrumb_pagination(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'breadcrumbs_&_pagination'
+#   }
+#   return render(request, "pages/components/bc_breadcrumb-pagination.html", context)
 
-@login_required(login_url='/accounts/login/')
-def bc_collapse(request):
-  context = {
-    'parent': 'basic_components',
-    'segment': 'collapse'
-  }
-  return render(request, "pages/components/bc_collapse.html", context)
+# @login_required(login_url='/accounts/login/')
+# def bc_collapse(request):
+#   context = {
+#     'parent': 'basic_components',
+#     'segment': 'collapse'
+#   }
+#   return render(request, "pages/components/bc_collapse.html", context)
 
 # @login_required(login_url='/accounts/login/')
 # def bc_tabs(request):
