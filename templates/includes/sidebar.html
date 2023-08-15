@@ -120,7 +120,7 @@
         <li data-username="Maps Google" class="nav-item {% if 'google_maps' in segment %}active{% endif %}"><a href="{% url 'google_maps' %}" class="nav-link "><span
               class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Maps</span></a>
         </li> {% endcomment %}
-        <li class="nav-item pcoded-menu-caption"> 
+        {% comment %} <li class="nav-item pcoded-menu-caption"> 
           <label>Utilisateur</label>
         </li>
         <li
@@ -132,7 +132,7 @@
             <li class=""><a href="{% url 'register' %}" class="" target="_blank">S'enregistrer</a></li>
             <li class=""><a href="{% url 'login' %}" class="" target="_blank">Se connecter</a></li>
           </ul>
-        </li>
+        </li> {% endcomment %}
         {% comment %} <li data-username="Profile Page" class="nav-item {% if 'profile' in segment %}active{% endif %}"><a href="{% url 'profile' %}" class="nav-link"><span
               class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Profil
               Page</span></a>
