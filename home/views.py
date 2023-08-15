@@ -169,7 +169,7 @@ def sample_page(request):
   }
   return render(request, 'pages/sample-page.html', context)
 
-#@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def prediction(request):
     cursor.execute(
     f"""SELECT DISTINCT ON ("label") "label"
