@@ -22,7 +22,7 @@
           {% else %}
           <a href="{% url 'index' %}" class="nav-link ">
           {% endif %}
-            <span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableaux de bord</span>
+            <span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Prédictions de vente</span>
           </a>
         </li>
         {% comment %} <li class="nav-item {% if 'tables' in segment %}active{% endif %}">
@@ -42,7 +42,7 @@
                 class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentification</span></a>
           <ul class="pcoded-submenu">
             <li class=""><a href="{% url 'login' %}" class="">Se connecter</a></li>
-            <li class=""><a href="{% url 'register' %}" class="">S'enregistrer'</a></li>
+            <li class=""><a href="{% url 'register' %}" class="">S'enregistrer</a></li>
           </ul>
         </li>
         {% endif %}
