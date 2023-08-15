@@ -2,7 +2,7 @@ from django.urls import path
 from admin_datta import views
 from django.contrib.auth import views as auth_views
 
-from .views import prediction, update_data, get_products_by_label
+from .views import tables, prediction, update_data, get_products_by_label
 
 urlpatterns = [
   path('' , views.index, name='index'),
