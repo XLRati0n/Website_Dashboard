@@ -31,12 +31,12 @@
                             <label for="checkbox-fill-1" class="cr"> Enregistrer les informations</label>
                         </div>
                     </div>
-                    <div class="form-group text-left">
+                    {% comment %} <div class="form-group text-left">
                         <div class="checkbox checkbox-fill d-inline">
                             <input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2">
                             <label for="checkbox-fill-2" class="cr">Je souhaite recevoir <a href="#!"> la newsletter</a> hebdomadaire.</label>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                     <button type="submit" class="btn btn-primary shadow-2 mb-4">Créer un compte</button>
                     <p class="mb-0 text-muted">Déjà un compte ? <a href="{% url 'login' %}"> Se connecter</a></p>
                 </form>
